@@ -7,22 +7,23 @@ receivers:
       http:
         endpoint: 0.0.0.0:4318
 exporters:
-  # NOTE: Prior to v0.86.0 use `logging` instead of `debug`.
-  debug:
-    verbosity: detailed
+  otlp:
+    endpoint: ${OTEL_EXPORTER_OTLP_ENDPOINT:localhost:4317}
+    tls:
+      insecure: true
 processors:
   batch:
 service:
   pipelines:
     traces:
       receivers: [otlp]
-      exporters: [debug]
+      exporters: [otlp]
       processors: [batch]
     metrics:
       receivers: [otlp]
-      exporters: [debug]
+      exporters: [otlp]
       processors: [batch]
     logs:
       receivers: [otlp]
-      exporters: [debug]
+      exporters: [otlp]
       processors: [batch]
