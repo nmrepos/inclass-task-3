@@ -44,3 +44,6 @@ export OTEL_EXPORTER_OTLP_ENDPOINT=http://localhost:4317
 opentelemetry-instrument --logs_exporter otlp --metrics_exporter otlp --traces_exporter otlp --service_name dice-service flask run -p 8081
 ```
 
+```bash
+opentelemetry-instrument python app.py
+```
