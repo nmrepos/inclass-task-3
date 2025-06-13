@@ -1,0 +1,15 @@
+- name: Run using a project directory
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Install flask python package
+      ansible.builtin.pip:
+        name: flask
+    - name: Install opentelemetry-distro python package
+      ansible.builtin.pip:
+        name: opentelemetry-distro
+    - name: Install opentelemetry-exporter-otlp python package
+      ansible.builtin.pip:
+        name: opentelemetry-exporter-otlp
+    - name: Execute the command in remote shell; stdout goes to the specified file on the remote
+      ansible.builtin.shell: opentelemetry-bootstrap -a install
