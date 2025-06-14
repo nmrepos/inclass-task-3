@@ -1,4 +1,4 @@
-# INFO8985_monolith
+# INFO8985 monolith
 otel for a python monolithic app
 
 ## SigNoz Setup
@@ -57,7 +57,9 @@ opentelemetry-instrument python app.py
   * Flask app sends traces (`roll` span).
   * logs appear in SigNoz (`testuser is rolling the dice: 4`).
   * custom metric (`dice_rolls`) appears in SigNoz.
-
+    
+![Metrics](screenshots/Screenshot(881).png)
+![Metrics](screenshots/Screenshot(882).png)
 
 #### **2) Add an exception to the roll function and get the exception into SigNoz**
 
@@ -71,6 +73,8 @@ opentelemetry-instrument python app.py
     ```
   * When  hit `/rolldice` enough times, it will raise an exception 
 
+![Exception](screenshots/Screenshot(880).png)
+
 #### **3) Make sure the application doesn't "swallow" the exception**
 
     ```python
@@ -78,4 +82,26 @@ opentelemetry-instrument python app.py
         logger.exception("roll failed")
         raise
     ```
+
   * The exception is re-raised, so Flask returns an error and you see the error both in the logs and in traces.
+
+![Exception](screenshots/Screenshot(890).png)
+
+
+## Screenshots of logs and Matrics
+
+![Exception](screenshots/Screenshot(879).png)
+![Exception](screenshots/Screenshot(880).png)
+![Exception](screenshots/Screenshot(881).png)
+![Exception](screenshots/Screenshot(882).png)
+![Exception](screenshots/Screenshot(883).png)
+![Exception](screenshots/Screenshot(884).png)
+![Exception](screenshots/Screenshot(885).png)
+![Exception](screenshots/Screenshot(886).png)
+![Exception](screenshots/Screenshot(887).png)
+![Exception](screenshots/Screenshot(888).png)
+![Exception](screenshots/Screenshot(889).png)
+![Exception](screenshots/Screenshot(890).png)
+![Exception](screenshots/Screenshot(891).png)
+
+
